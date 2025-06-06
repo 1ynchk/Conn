@@ -1,0 +1,20 @@
+.header__btn {
+	margin-top: 5px;
+	background-color: rgba(191, 189, 188, 0.5);
+	padding: 10px 9px;
+	margin-right: 2px;
+	cursor: pointer;
+	transition: .3s ease;
+}
+
+.header__btn:hover {
+	background-color: rgba(191, 189, 188, 0.3);
+}
+
+.header__btn:last-child {
+	background-color: #63C5DA;	
+}
+
+.header__btn:last-child:hover {
+	background-color: #8FDCEA;	
+}

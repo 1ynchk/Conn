@@ -1,0 +1,17 @@
+.popup__head {
+	margin-top: 40px;
+	font-size: 16px;
+	display: flex;
+}
+
+.popup__el {
+	margin-right: 9px;
+	padding: 5px 10px;
+	border: 1px solid rgb(50, 50, 50);
+	width: fit-content;
+	border-radius: 10px;
+}
+
+.popup__el.active {
+	background-color: #8FDCEA;	
+}
