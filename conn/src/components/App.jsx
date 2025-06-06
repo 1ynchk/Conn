@@ -6,7 +6,7 @@ import {useState} from 'react'
 function App() {
 
 	const [isPopup, setPopup] = useState(false)
-
+	const [choisenTerminal, setTerminal] = useState(null)
 
 	return (
 	    <>
@@ -14,6 +14,8 @@ function App() {
 			setPopup={setPopup}
 			isPopup={isPopup}/> 
 		<Popup 
+			setTerminal={setTerminal}
+			choisenTerminal={choisenTerminal}
 			setPopup={setPopup}
 			isPopup={isPopup}/>
 	    </>

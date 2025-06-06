@@ -13,8 +13,9 @@ const PopupHead = (props) => {
 		{
 		tabs.map(el => {
 			return (
-			<li	
-				className={`popup__el ${el.ind == whatTab ? 'active' : ''}`}>
+			<li
+				key={el.ind}
+				className={`popup__el ${el.ind <= whatTab ? 'active' : ''}`}>
 				{el.title}
 			</li>)
 		})

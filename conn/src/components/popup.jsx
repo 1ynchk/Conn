@@ -2,13 +2,16 @@ import {motion, AnimatePresence} from 'framer-motion'
 import '../static/popup.css'
 import { IoMdClose } from "react-icons/io";
 import PopupHead from './popup-head.jsx'
-import {useState} from 'react'
+import TerminalAdding from './terminal-adding.jsx'
+import {useState, useEffect} from 'react'
 
 const Popup = (props) => {
 	
 	const {
 		isPopup,
-		setPopup
+		setPopup,
+		choisenTerminal,
+		setTerminal
 	} = props
 
 	const tabs = [
@@ -42,12 +45,48 @@ const Popup = (props) => {
 								setTab={setTab}
 								whatTab={whatTab}
 								tabs={tabs} />
+
+							<TabPage
+								setTerminal={setTerminal}
+								choisenTerminal={choisenTerminal}
+								whatTab={whatTab}/>
+
+								
 							</div>
 						</motion.div>
 					)
 				}	
 			</AnimatePresence>
 		</>
+	)
+}
+
+const TabPage = (props) => {
+
+	const {
+		whatTab, 
+		setTerminal,
+		choisenTerminal
+	} = props
+
+	const [content, setContent] = useState(null)
+
+	useEffect(() => {
+		switch (true) {
+			case whatTab == 1:
+				setContent(
+					<TerminalAdding
+						setTerminal={setTerminal}
+						choisenTerminal={choisenTerminal}
+					/>
+				)
+		}
+	}, [whatTab])
+
+	return (
+		<div className='tabpage'>
+		{content}	
+		</div>
 	)
 }
 

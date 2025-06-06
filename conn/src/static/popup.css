@@ -17,6 +17,7 @@
 	border-radius: 10px;
 	cursor: default;
 	position: relative;
+	padding: 10px;
 }
 
 .popup__close {
@@ -25,4 +26,31 @@
 	top: 20px;
 	font-size: 30px;
 	cursor: pointer;
+}
+
+.tabpage {
+	margin-left: 40px;
+	margin-top: 25px;
+}
+
+.tabpage__title {
+	font-size: 17px;
+}
+
+.radio_input {
+	display: flex;
+	align-items: center;
+	color: rgb(50, 50, 50, 0.8);
+	margin: 0;
+	margin-top: 10px;
+}
+
+.tabpage__form {
+	margin-top: 15px;
+	font-size: 14px;
+	width: 100%;
+}
+
+.btn_radio {
+	margin-right: 15px;
 }
