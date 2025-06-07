@@ -12,12 +12,13 @@
 
 .popup {
 	background-color: white;
-	width: 60%;
+	width: 600px;
 	height: 600px;
 	border-radius: 10px;
 	cursor: default;
 	position: relative;
 	padding: 10px;
+	padding-right: 40px;
 }
 
 .popup__close {
@@ -53,4 +54,10 @@
 
 .btn_radio {
 	margin-right: 15px;
+}
+
+.tabpage__container {
+	border-radius: 10px;
+	margin-top: 25px;	
+	padding: 10px;
 }

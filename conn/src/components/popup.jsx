@@ -11,7 +11,9 @@ const Popup = (props) => {
 		isPopup,
 		setPopup,
 		choisenTerminal,
-		setTerminal
+		setTerminal,
+		setMacSR,
+		choisenMacSR
 	} = props
 
 	const tabs = [
@@ -47,11 +49,11 @@ const Popup = (props) => {
 								tabs={tabs} />
 
 							<TabPage
+								setMacSR={setMacSR}
+								choisenMacSR={choisenMacSR}
 								setTerminal={setTerminal}
 								choisenTerminal={choisenTerminal}
 								whatTab={whatTab}/>
-
-								
 							</div>
 						</motion.div>
 					)
@@ -66,26 +68,21 @@ const TabPage = (props) => {
 	const {
 		whatTab, 
 		setTerminal,
-		choisenTerminal
+		choisenTerminal,
+		setMacSR,
+		choisenMacSR
 	} = props
 
 	const [content, setContent] = useState(null)
 
-	useEffect(() => {
-		switch (true) {
-			case whatTab == 1:
-				setContent(
-					<TerminalAdding
-						setTerminal={setTerminal}
-						choisenTerminal={choisenTerminal}
-					/>
-				)
-		}
-	}, [whatTab])
-
 	return (
 		<div className='tabpage'>
-		{content}	
+			<TerminalAdding
+					setMacSR={setMacSR}
+					choisenMacSR={choisenMacSR}
+					setTerminal={setTerminal}
+					choisenTerminal={choisenTerminal}
+				/>
 		</div>
 	)
 }

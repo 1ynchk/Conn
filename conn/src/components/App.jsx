@@ -7,6 +7,7 @@ function App() {
 
 	const [isPopup, setPopup] = useState(false)
 	const [choisenTerminal, setTerminal] = useState(null)
+	const [choisenMacSR, setMacSR] = useState(null)
 
 	return (
 	    <>
@@ -14,6 +15,8 @@ function App() {
 			setPopup={setPopup}
 			isPopup={isPopup}/> 
 		<Popup 
+			choisenMacSR={choisenMacSR}
+			setMacSR={setMacSR}
 			setTerminal={setTerminal}
 			choisenTerminal={choisenTerminal}
 			setPopup={setPopup}

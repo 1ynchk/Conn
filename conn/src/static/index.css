@@ -6,3 +6,12 @@ li, ul {
 	text-decoration: none;
 	list-style: none;
 }
+
+.common_input {
+	padding: 0 5px;
+	font-size: 17px;
+	margin-top: 10px;
+	width: 250px;
+	border-radius: 5px;
+	height: 25px;
+}
