@@ -1,6 +1,9 @@
 import {useEffect, useRef} from 'react'
 import {motion} from 'framer-motion'
 
+import {getAllStaff} from '../requests/terminal/get-all-staff.jsx'
+import {useState} from 'react'
+
 const TerminalAdding = (props) => {
 
 	const {
@@ -100,9 +103,20 @@ const TerminalGiveTo = (props) => {
 		choisenMacSR
 	} = props
 
-
-	console.log(setMacSR)
-		
+	const [staff, setStaff]	= useState([])
+	const [firstLoading, setLoading] = useState(true)
+	
+	useEffect(() => {
+		if (firstLoading) {
+			getAllStaff()
+				  .then(result => {
+					setStaff(result.data)			
+				}
+			)
+			setLoading(false)
+		}
+	}, [])
+		  
 	return (
 		<motion.div
 			className='tabpage__container'
@@ -124,6 +138,7 @@ const TerminalGiveTo = (props) => {
 			<select 
 				disabled={choisenMacSR == null ? true : false}
 				className='common_input'>
+				<option>Никто не выбран</option>
 				
 			</select>
 		</motion.div>
