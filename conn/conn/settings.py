@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -6,7 +7,7 @@ SECRET_KEY = 'django-insecure-_kb$w(f*g(1l9t$-196d6_&bq1)h%+n_+jl#l2bttwfwc5wgg=
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1"]
+ALLOWED_HOSTS = ["127.0.0.1", "85.193.84.89"]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -18,15 +19,31 @@ INSTALLED_APPS = [
 
     # 3rd apps
     'rest_framework',
+    'corsheaders',
 
     # apps
     'users',
-    'switches'
+    'switches',
+    'staff'
 ]
+
+# CORSHEADERS
+
+CORS_ALLOWED_ORIGINS = [
+        'http://85.193.84.89:5173',
+        'http://127.0.0.1:5173'
+]
+
+CORS_ALLOW_METHOD = [
+    'GET'
+]
+
+CORS_ALLOW_CREDENTIALS = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -83,6 +100,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static/'
+STATIC_URL = '/staticfiles/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
