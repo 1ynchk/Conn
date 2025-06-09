@@ -1,28 +1,42 @@
 import Header from './header.jsx'
 import Popup from './popup.jsx'
 import '../static/index.css'
-import {useState} from 'react'
+import { useState } from 'react'
 
 function App() {
 
 	const [isPopup, setPopup] = useState(false)
+	// Terminal Adding
 	const [choisenTerminal, setTerminal] = useState(null)
 	const [choisenMacSR, setMacSR] = useState(null)
+	const [choisenMacSRTrue, setChoisenMacSRTrue] = useState(null)
+	const [givenTo, setGivenTo] = useState(null)
+	const [giveNameToTerminal, setGiveNameToTerminal] = useState(null)
+	const [addConnection, setConnection] = useState(null)
 
 	return (
-	    <>
-		<Header
-			setPopup={setPopup}
-			isPopup={isPopup}/> 
-		<Popup 
-			choisenMacSR={choisenMacSR}
-			setMacSR={setMacSR}
-			setTerminal={setTerminal}
-			choisenTerminal={choisenTerminal}
-			setPopup={setPopup}
-			isPopup={isPopup}/>
-	    </>
-  	)
+		<>
+			<Header
+				setPopup={setPopup}
+				isPopup={isPopup} />
+			<Popup
+				addConnection={addConnection}
+				setConnection={setConnection}
+				giveNameToTerminal={giveNameToTerminal}
+				setGiveNameToTerminal={setGiveNameToTerminal}
+				givenTo={givenTo}
+				setGivenTo={setGivenTo}
+				choisenMacSR={choisenMacSR}
+				setMacSR={setMacSR}
+				setTerminal={setTerminal}
+				choisenTerminal={choisenTerminal}
+				setPopup={setPopup}
+				isPopup={isPopup}
+				setChoisenMacSRTrue={setChoisenMacSRTrue}
+				choisenMacSRTrue={choisenMacSRTrue}
+			/>
+		</>
+	)
 }
 
 export default App

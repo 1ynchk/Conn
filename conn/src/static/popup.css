@@ -13,7 +13,7 @@
 .popup {
 	background-color: white;
 	width: 600px;
-	height: 600px;
+	height: 700px;
 	border-radius: 10px;
 	cursor: default;
 	position: relative;
@@ -60,4 +60,14 @@
 	border-radius: 10px;
 	margin-top: 25px;	
 	padding: 10px;
+}
+
+.terminal_is_taken {
+	margin-top: 10px;
+	color: red;
+}
+
+.terminal_is_not_taken {
+	margin-top: 10px;
+	color: green;
 }

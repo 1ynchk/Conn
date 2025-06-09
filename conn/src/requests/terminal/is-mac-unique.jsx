@@ -2,8 +2,8 @@ import axios from 'axios'
 
 import BACKEND_URL from '../host.js'
 
-export const getAllStaff = () => {
-	  return axios.get(`${BACKEND_URL}/staff/get-all-staff/`, {
+export const isMacUnique = (params) => {
+	  return axios.get(`${BACKEND_URL}/devices/is-mac-unique/?mac=${params.mac}&is_mac=${params.is_mac}`, {
 		      withCredentials: true
 		    })
 	  .then(response => response.data)
