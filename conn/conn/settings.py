@@ -24,14 +24,18 @@ INSTALLED_APPS = [
     # apps
     'users',
     'switches',
-    'staff'
+    'staff',
+    'devices',
+    'connection',
+    'stock'
 ]
 
 # CORSHEADERS
 
 CORS_ALLOWED_ORIGINS = [
         'http://85.193.84.89:5173',
-        'http://127.0.0.1:5173'
+        'http://127.0.0.1:5173',
+        'http://localhost:5173'
 ]
 
 CORS_ALLOW_METHOD = [
