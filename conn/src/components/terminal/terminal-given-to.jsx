@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 
-import { getAllStaff } from '../requests/terminal/get-all-staff.jsx'
+import { getAllStaff } from '../../requests/terminal/get-all-staff.jsx'
 import { useState } from 'react'
 
 const TerminalGiveTo = (props) => {
@@ -32,14 +32,12 @@ const TerminalGiveTo = (props) => {
         <motion.div
             className='tabpage__container'
             initial={{
-                opacity: 0,
                 backgroundColor: "#808080",
                 y: 10
             }}
             animate={{
-                opacity: !choisenTerminal ? 0 : 1,
                 padding: choisenMacSRTrue == true  ? 0 : 10,
-                backgroundColor: choisenMacSRTrue == true || choisenMacSR ? "#ffffff" : "#808080",
+                backgroundColor: choisenMacSRTrue == true || choisenMacSR != null && choisenMacSR.length == 17  ? "#ffffff" : "#808080",
                 y: choisenMacSRTrue == true ? 0 : 10
             }}
         >

@@ -1,40 +1,57 @@
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 
-import { isMacUnique } from './../requests/terminal/is-mac-unique';
+import { isMacUnique } from '../../requests/terminal/is-mac-unique';
 
-const AddConnection = (props) => {
+const AddingMacOrNum = (props) => {
 
     const {
         choisenTerminal,
         setMacSR,
         choisenMacSR,
         setChoisenMacSRTrue,
-        choisenMacSRTrue,
-        setConnection,
-        addConnection
+        choisenMacSRTrue
     } = props
 
+    useEffect(() => {
+
+        const checkMac = setTimeout(() => {
+            const is_mac = !(choisenTerminal == 'C-DATA FD511G-X')
+
+            if (choisenMacSR != null) {
+                if (choisenTerminal != 'C-DATA FD511G-X' && choisenMacSR.length == 17) {
+                    isMacUnique({ 'mac': choisenMacSR, 'is_mac': is_mac })
+                        .then(result => {
+                            setChoisenMacSRTrue(result.is_unique)
+                        }
+                        )
+                } else {
+                    setChoisenMacSRTrue(null)
+                }
+
+                if (choisenTerminal == 'C-DATA FD511G-X' && choisenMacSR.length != 0) {
+                    isMacUnique({ 'mac': choisenMacSR, 'is_mac': is_mac })
+                        .then(result => {
+                            setChoisenMacSRTrue(result.is_unique)
+                        }
+                        )
+                } else {
+                    setChoisenMacSRTrue(null)
+                }
+
+            }
+        }, 1000)
+
+        return () => clearTimeout(checkMac)
+    }, [choisenMacSR, choisenTerminal])
+	
     return (
         <motion.div
             className='tabpage__container'
             initial={{ backgroundColor: "#808080", y: 10 }}
             animate={{
-                opacity: choisenMacSRTrue == null ||
-                    choisenMacSRTrue == false ||
-                    choisenMacSR == null ||
-                    choisenMacSR.length == 0 ? 0 : 1,
-                padding: choisenMacSRTrue == null ||
-                    choisenMacSRTrue == false ||
-                    choisenMacSR == null ||
-                    choisenMacSR.length == 0 ? 0 : 1,
-                backgroundColor: choisenMacSRTrue == null ||
-                    choisenMacSRTrue == false ||
-                    givenTo == 'Никто не выбран' ||
-                    givenTo == null ||
-                    choisenMacSR == null ||
-                    choisenMacSR.length == 0
-                    ? "#808080" : "#ffffff",
+                padding: choisenTerminal != null ? 0 : 10,
+                backgroundColor: choisenTerminal != null ? "#ffffff" : "#808080",
                 y: choisenTerminal != null ? 0 : 10
             }}>
             <div className='tabpage__title'>
@@ -79,4 +96,4 @@ const AddConnection = (props) => {
     )
 }
 
-export default AddConnection
+export default AddingMacOrNum

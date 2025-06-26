@@ -10,19 +10,15 @@ const GiveNameToTerminal = (props) => {
         givenTo
     } = props
 
+	console.log(giveNameToTerminal)
 
     return (
         <motion.div
             className='tabpage__container'
             initial={{ backgroundColor: "#808080", y: 10 }}
             animate={{
-                opacity:
-                    choisenMacSRTrue == null ||
-                        choisenMacSRTrue == false ||
-                        choisenMacSR == null ||
-                        choisenMacSR.length == 0 ? 0 : 1,
                 padding:
-                    choisenMacSRTrue == null ||
+                    	choisenMacSRTrue == null ||
                         choisenMacSRTrue == false ||
                         givenTo == 'Никто не выбран' ||
                         givenTo == null ||
@@ -48,6 +44,7 @@ const GiveNameToTerminal = (props) => {
                 Введите имя терминала:
             </div>
             <input
+	    	placeholder='c_data_ivanov'
                 onChange={(e) => setGiveNameToTerminal(e.target.value)}
                 className='common_input'
                 value={giveNameToTerminal == null ? '' : giveNameToTerminal}

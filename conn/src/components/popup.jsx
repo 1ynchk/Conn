@@ -1,9 +1,9 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import '../static/popup.css'
 import { IoMdClose } from "react-icons/io";
-import PopupHead from './popup-head.jsx'
-import TerminalAdding from './terminal-adding.jsx'
 import { useState, useEffect } from 'react'
+import PopupHead from './popup-head.jsx'
+import TerminalAdding from './terminal/terminal-adding.jsx'
 
 const Popup = (props) => {
 

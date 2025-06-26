@@ -83,9 +83,10 @@ const TerminalAdding = (props) => {
 						addConnection={addConnection}
 						setConnection={setConnection}
 						givenTo={givenTo}
-						giveNameToTerminal={giveNameToTerminal}
 						choisenMacSR={choisenMacSR}
 						choisenTerminal={choisenTerminal}
+						givenTo={givenTo}
+						giveNameToTerminal={giveNameToTerminal}
 					/>
 				</form>
 
