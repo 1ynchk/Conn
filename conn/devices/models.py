@@ -9,6 +9,8 @@ class Devices(models.Model):
     serial_number = models.CharField(max_length=100, unique=True, null=True)
     given_to = models.ForeignKey('staff.Staff', on_delete=models.SET_NULL, null=True)
     comment = models.CharField(max_length=2000)
+
+    user = models.ForeignKey('users.Users', on_delete=models.SET_NULL, null=True)
     
     def __str__(self):
         return self.name

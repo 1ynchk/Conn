@@ -1,3 +1,20 @@
 from django.db import models
 
 # Create your models here.
+class Connections(models.Model):
+    '''Подключения абонентов'''
+
+    types_conn = [
+        ("ipoe", "Динамический IP"),
+        ("pptp", "Point-To-Point Tunneling Protocol"),
+        ("static", "Статический Ethernet IP"), 
+        ("L2", "L2 канал"),
+        ("openvpn", "openvpn")
+    ]
+
+    user = models.ForeignKey('users.Users', on_delete=models.CASCADE)
+    type_conn = models.CharField(choices=types_conn)
+    vlan = models.CharField(max_length=10, unique=True)
+
+    def __str__(self):
+        return self.user.username
