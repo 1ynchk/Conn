@@ -1,7 +1,8 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
 import { isMacUnique } from '../../requests/terminal/is-mac-unique';
+import { isConnectionUnique } from '../../requests/terminal/is-connection-unique'
 
 const AddConnection = (props) => {
 
@@ -15,7 +16,23 @@ const AddConnection = (props) => {
 	giveNameToTerminal 
     } = props
 
-	console.log(givenTo, choisenMacSRTrue, choisenMacSR, giveNameToTerminal)
+    const [allowedConnections, setAllowedConnections] = useState([])
+
+    useEffect(() => {
+	let timeout = setTimeout(() => {
+		if (addConnection != null && addConnection != undefined && addConnection.length != 0) {
+			isConnectionUnique({"connection": addConnection})
+			.then(result => setAllowedConnections(result.data))
+			console.log(allowedConnections)
+		} else {
+			setAllowedConnections([])
+		}
+		
+	}, 1000)
+
+	return () => clearTimeout(timeout)
+
+     },[addConnection])	
 
     return (
         <motion.div
@@ -46,11 +63,10 @@ const AddConnection = (props) => {
                	Введите подключение: 
             </div>
             <input
-                maxLength={17}
                 onChange={(e) => setConnection(e.target.value)}
                 placeholder='ivanov'
                 className='common_input'
-                value={choisenMacSR == null ? '' : addConnection}
+                value={addConnection == null ? '' : addConnection}
                 type='text'
                 disabled={
 			choisenMacSRTrue == false
@@ -60,6 +76,10 @@ const AddConnection = (props) => {
 		        || giveNameToTerminal.length == 0
 		        || givenTo == null
 		        || givenTo == "Никто не выбран" ? true : false} />
+
+	    <div className='connections-list'>
+
+	    </div>
 
             {
                 choisenMacSRTrue == false && (

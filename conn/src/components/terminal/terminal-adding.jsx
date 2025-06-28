@@ -20,6 +20,8 @@ const TerminalAdding = (props) => {
 		setConnection
 	} = props
 
+	console.log(addConnection)
+
 	return (
 		<>
 			<div className='terminaladding'>

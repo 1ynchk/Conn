@@ -4,6 +4,7 @@ import { IoMdClose } from "react-icons/io";
 import { useState, useEffect } from 'react'
 import PopupHead from './popup-head.jsx'
 import TerminalAdding from './terminal/terminal-adding.jsx'
+import ButtonNext from './button_next.jsx'
 
 const Popup = (props) => {
 
@@ -19,7 +20,9 @@ const Popup = (props) => {
 		givenTo,
 		setGivenTo,
 		setGiveNameToTerminal,
-		giveNameToTerminal
+		giveNameToTerminal,
+		addConnection,
+		setConnection
 	} = props
 
 	const tabs = [
@@ -62,9 +65,11 @@ const Popup = (props) => {
 									choisenMacSRTrue={choisenMacSRTrue}
 									setChoisenMacSRTrue={setChoisenMacSRTrue}
 									setMacSR={setMacSR}
+									setConnection={setConnection}
 									choisenMacSR={choisenMacSR}
 									setTerminal={setTerminal}
 									choisenTerminal={choisenTerminal}
+									addConnection={addConnection}
 									whatTab={whatTab} />
 							</div>
 						</motion.div>
@@ -88,7 +93,9 @@ const TabPage = (props) => {
 		givenTo,
 		setGivenTo,
 		giveNameToTerminal,
-		setGiveNameToTerminal
+		setGiveNameToTerminal,
+		setConnection,
+		addConnection
 	} = props
 
 	const [content, setContent] = useState(null)
@@ -96,6 +103,8 @@ const TabPage = (props) => {
 	return (
 		<div className='tabpage'>
 			<TerminalAdding
+				addConnection={addConnection}
+				setConnection={setConnection}
 				giveNameToTerminal={giveNameToTerminal}
 				setGiveNameToTerminal={setGiveNameToTerminal}
 				givenTo={givenTo}
@@ -107,6 +116,7 @@ const TabPage = (props) => {
 				setChoisenMacSRTrue={setChoisenMacSRTrue}
 				choisenMacSRTrue={choisenMacSRTrue}
 			/>
+			<ButtonNext/>			
 		</div>
 	)
 }

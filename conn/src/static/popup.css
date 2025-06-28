@@ -71,3 +71,21 @@
 	margin-top: 10px;
 	color: green;
 }
+
+.button-next {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	justify-self: right;
+	padding: 10px 15px;
+	border-radius: 10px;
+	background-color: rgba(50, 50, 50, 0.3);	
+}
+
+.connections-list {
+	position: absolute;
+	width: 265px;
+	height: 100px;
+	background-color: red;
+	z-index: 3;
+}

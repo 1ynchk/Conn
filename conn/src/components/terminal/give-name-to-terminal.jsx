@@ -10,8 +10,6 @@ const GiveNameToTerminal = (props) => {
         givenTo
     } = props
 
-	console.log(giveNameToTerminal)
-
     return (
         <motion.div
             className='tabpage__container'

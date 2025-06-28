@@ -3,7 +3,7 @@ import axios from 'axios'
 import BACKEND_URL from '../host.js'
 
 export const getAllStaff = () => {
-	  return axios.get(`${BACKEND_URL}/staff/get-all-staff/`, {
+	  return axios.get(`${BACKEND_URL}/api/staff/get-all-staff/`, {
 		      withCredentials: true
 		    })
 	  .then(response => response.data)
