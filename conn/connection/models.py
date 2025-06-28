@@ -12,6 +12,7 @@ class Connections(models.Model):
         ("openvpn", "openvpn")
     ]
 
+    name = models.CharField(max_length=255, unique=True)
     user = models.ForeignKey('users.Users', on_delete=models.CASCADE)
     type_conn = models.CharField(choices=types_conn)
     vlan = models.CharField(max_length=10, unique=True)

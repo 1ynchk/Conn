@@ -10,10 +10,10 @@ from devices.urls import urlpatterns as devices
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('users/', include(users), name='users'),
-    path('switches/', include(switches), name='switches'),
-    path('staff/', include(staff), name='staff'),
-    path('stock/', include(stock), name='stock'),
-    path('connection/', include(connection), name='connection'),
-    path('devices/', include(devices), name='devices'),
+    path('api/users/', include(users), name='users'),
+    path('api/switches/', include(switches), name='switches'),
+    path('api/staff/', include(staff), name='staff'),
+    path('api/stock/', include(stock), name='stock'),
+    path('api/connection/', include(connection), name='connection'),
+    path('api/devices/', include(devices), name='devices'),
 ]
