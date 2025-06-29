@@ -4,16 +4,26 @@ from django.db import models
 class Switches(models.Model):
     '''Модель для коммутаторов'''
 
+    name = models.CharField(max_length=500, unique=True)
     model = models.CharField(max_length=255)
     ports = models.ManyToManyField('Port')
 
     def __str__(self):
         return self.model
 
+class SwitchThroughPort(models.Model):
+    '''Модель m-t-m для свитчей с портами'''
+    
+    switch = models.ForeignKey(Switches, on_delete=models.CASCADE) 
+    port = models.ForeignKey('Port', on_delete=models.SET_NULL, null=True)
+    
+    class Meta:
+        unique_together = ('switch', 'port')
+
 class PortThroughConnection(models.Model):
     '''Модель m-t-m для подключений с портами'''
 
-    connection = models.ForeignKey('connection.Connections', on_delete=models.CASCADE)
+    connection = models.ForeignKey('connection.Connections', on_delete=models.SET_NULL, null=True)
     port = models.ForeignKey('Port', on_delete=models.CASCADE)
 
     class Meta:
@@ -38,8 +48,8 @@ class Port(models.Model):
     untgd_vlan = models.IntegerField() # Поменять на m-t-m связь в будущем 
     macs = models.IntegerField() # Поменять на m-t-m связь в будущем
     connector = models.CharField(choices=connectors_types, max_length=50)
-    comment = models.CharField(max_length=355)
+    comment = models.CharField(max_length=355, null=True)
     client = models.ManyToManyField('connection.Connections', through=PortThroughConnection)
     
     def __str__(self):
-        return 
+        return self.name

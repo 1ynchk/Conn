@@ -15,7 +15,8 @@ class Connections(models.Model):
     name = models.CharField(max_length=255, unique=True)
     user = models.ForeignKey('users.Users', on_delete=models.CASCADE)
     type_conn = models.CharField(choices=types_conn)
-    vlan = models.CharField(max_length=10, unique=True)
+    vlan = models.CharField(max_length=10, unique=True, null=True)
+    addr = models.CharField(max_length=500)
 
     def __str__(self):
         return self.user.username

@@ -7,9 +7,9 @@ from .serializers import ConnectionSerializer
 
 @api_view(['GET'])
 def check_connection(request):
+    '''Возвращает объект подключения'''
     
     connection = request.query_params.get('connection')
-    print(connection)
     queryset = Connections.objects.filter(name__icontains=connection)
     serialized_queryset = ConnectionSerializer(queryset, many=True).data
 
