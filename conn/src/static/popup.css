@@ -79,13 +79,91 @@
 	justify-self: right;
 	padding: 10px 15px;
 	border-radius: 10px;
-	background-color: rgba(50, 50, 50, 0.3);	
+	background-color: #8FDCEA;	
+	cursor: pointer;
+}
+
+.button-back {
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	justify-self: right;
+	padding: 10px 15px;
+	border-radius: 10px;
+	background-color: #8FDCEA;	
+	cursor: pointer;
+}
+
+.button-next:hover {
+	background-color: #5ad6ec;
+}
+
+.button-next:disabled {
+	cursor: default;
+	background-color: rgba(50, 50, 50, 0.3);
 }
 
 .connections-list {
 	position: absolute;
 	width: 265px;
-	height: 100px;
-	background-color: red;
+	min-height: 50px;
+	max-height: 100px;
+	background-color: rgb(179, 179, 179);
 	z-index: 3;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	padding: 5px;
+}
+
+.allowed-connection {
+	font-size: 16px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	height: 50px;
+	color: rgb(50, 50, 50);
+	justify-content: space-between;
+	transition: .3s ease;
+}
+
+.allowed-connection:hover {
+	background-color: #63C5DA;
+	border-radius: 10px;
+}
+
+.allowed-connection-name {
+}
+
+.allowed-connection-addr {
+	width: 70%;
+}
+
+.connection-ports {
+	min-height: 50px;
+	background-color: rgb(156, 156, 156);
+	margin-top: 10px;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+}
+
+.connection-title {
+	margin-left: 10px;
+}
+
+.switch-port {
+	width: 50px;
+	height: 50px;
+	border-radius: 10px;
+}
+
+.switch-port-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	margin-right: 20px;
 }

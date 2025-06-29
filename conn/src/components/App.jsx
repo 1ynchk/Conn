@@ -6,6 +6,7 @@ import { useState } from 'react'
 function App() {
 
 	const [isPopup, setPopup] = useState(false)
+
 	// Terminal Adding
 	const [choisenTerminal, setTerminal] = useState(null)
 	const [choisenMacSR, setMacSR] = useState(null)
@@ -14,12 +15,17 @@ function App() {
 	const [giveNameToTerminal, setGiveNameToTerminal] = useState(null)
 	const [addConnection, setConnection] = useState(null)
 
+	// Connection adding
+	const [isSwitch, setSwitch] = useState(null)
+	const [choisenPort, setChoisenPort] = useState(null)
+
 	return (
 		<>
 			<Header
 				setPopup={setPopup}
 				isPopup={isPopup} />
 			<Popup
+				// Terminal adding
 				addConnection={addConnection}
 				setConnection={setConnection}
 				giveNameToTerminal={giveNameToTerminal}
@@ -34,6 +40,12 @@ function App() {
 				isPopup={isPopup}
 				setChoisenMacSRTrue={setChoisenMacSRTrue}
 				choisenMacSRTrue={choisenMacSRTrue}
+
+				// Connection adding
+				isSwitch={isSwitch}
+				setSwitch={setSwitch}
+				choisenPort={choisenPort}
+				setChoisenPort={setChoisenPort}
 			/>
 		</>
 	)

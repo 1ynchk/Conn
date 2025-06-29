@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import { isMacUnique } from '../../requests/terminal/is-mac-unique';
 import { isConnectionUnique } from '../../requests/terminal/is-connection-unique'
@@ -12,74 +12,134 @@ const AddConnection = (props) => {
         choisenMacSRTrue,
         setConnection,
         addConnection,
-	givenTo,
-	giveNameToTerminal 
+        givenTo,
+        giveNameToTerminal
     } = props
 
     const [allowedConnections, setAllowedConnections] = useState([])
+    const [connectionComponent, setConnectionComponent] = useState(null)
 
     useEffect(() => {
-	let timeout = setTimeout(() => {
-		if (addConnection != null && addConnection != undefined && addConnection.length != 0) {
-			isConnectionUnique({"connection": addConnection})
-			.then(result => setAllowedConnections(result.data))
-			console.log(allowedConnections)
-		} else {
-			setAllowedConnections([])
-		}
-		
-	}, 1000)
+        if (typeof(addConnection) == 'object' && addConnection != null) {
+            setConnectionComponent(`${addConnection.name} ${addConnection.addr}`)
+        }
+    }, [])
 
-	return () => clearTimeout(timeout)
+    useEffect(() => {
+        let timeout = setTimeout(() => {
+            if (
+                connectionComponent != null 
+                && connectionComponent != undefined 
+                && connectionComponent.length != 0
+                && typeof(addConnection) != 'object'
+                && typeof(addConnection.id) != 'number'
+            ) {
+                isConnectionUnique({ "connection": connectionComponent })
+                    .then(result => setAllowedConnections(result.data))
+            } else {
+                setAllowedConnections([])
+            }
 
-     },[addConnection])	
+        }, 1000)
+
+        return () => clearTimeout(timeout)
+
+    }, [connectionComponent])
 
     return (
         <motion.div
             className='tabpage__container'
             initial={{ backgroundColor: "#808080", y: 10 }}
             animate={{
-                padding:  
-                    	 choisenMacSRTrue == false
-                    	|| choisenMacSR == null 
-                    	|| choisenMacSR.length == 0
-		    	|| giveNameToTerminal == null
-		        || giveNameToTerminal.length == 0
-		        || givenTo == null
-		        || givenTo == "Никто не выбран"
-			    ? 10 : 0,
-                backgroundColor: 
-		    choisenMacSRTrue == false
-                    	|| choisenMacSR == null 
-                    	|| choisenMacSR.length == 0
-		    	|| giveNameToTerminal == null
-		        || giveNameToTerminal.length == 0
-		        || givenTo == null
-		        || givenTo == "Никто не выбран"
-                    ? "#808080" : "#ffffff",
+                padding:
+                    choisenMacSRTrue == false
+                        || choisenMacSR == null
+                        || choisenMacSR.length == 0
+                        || giveNameToTerminal == null
+                        || giveNameToTerminal.length == 0
+                        || givenTo == null
+                        || givenTo == "Никто не выбран"
+                        ? 10 : 0,
+                backgroundColor:
+                    choisenMacSRTrue == false
+                        || choisenMacSR == null
+                        || choisenMacSR.length == 0
+                        || giveNameToTerminal == null
+                        || giveNameToTerminal.length == 0
+                        || givenTo == null
+                        || givenTo == "Никто не выбран"
+                        ? "#808080" : "#ffffff",
                 y: choisenTerminal != null ? 0 : 10
             }}>
             <div className='tabpage__title'>
-               	Введите подключение: 
+                Введите подключение:
             </div>
             <input
-                onChange={(e) => setConnection(e.target.value)}
+                onChange={(e) => {
+                    setConnectionComponent(e.target.value)
+                    if (typeof(addConnection) == 'object') {
+                        setConnection(e.target.value)
+                    }
+                }}
                 placeholder='ivanov'
                 className='common_input'
-                value={addConnection == null ? '' : addConnection}
+                value={connectionComponent == null ? '' : connectionComponent}
                 type='text'
                 disabled={
-			choisenMacSRTrue == false
-                    	|| choisenMacSR == null 
-                    	|| choisenMacSR.length == 0
-		    	|| giveNameToTerminal == null
-		        || giveNameToTerminal.length == 0
-		        || givenTo == null
-		        || givenTo == "Никто не выбран" ? true : false} />
+                    choisenMacSRTrue == false
+                        || choisenMacSR == null
+                        || choisenMacSR.length == 0
+                        || giveNameToTerminal == null
+                        || giveNameToTerminal.length == 0
+                        || givenTo == null
+                        || givenTo == "Никто не выбран" ? true : false} />
 
-	    <div className='connections-list'>
+            {
+                allowedConnections.length != 0 &&
+                choisenMacSRTrue != false
+                && choisenMacSR != null
+                && choisenMacSR.length != 0
+                && giveNameToTerminal != null
+                && giveNameToTerminal.length != 0
+                && givenTo != null
+                && givenTo != "Никто не выбран" &&
+                (
+                    <AnimatePresence>
+                        <motion.div
 
-	    </div>
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            className='connections-list'>
+                            {
+                                allowedConnections.map((el, ind) => {
+                                    return (
+                                        <div
+                                            onClick={() => {
+                                                setConnection({ id: el.id, name: el.name, addr: el.addr })
+                                                setConnectionComponent(`${el.name} ${el.addr}`)
+                                                setAllowedConnections([])
+                                            }}
+                                            key={ind}
+                                            className='allowed-connection'>
+                                            <div
+                                                className='allowed-connection-name'>
+                                                {el.name}
+                                            </div>
+                                            <div
+                                                className='allowed-connection-addr'>
+                                                {el.addr}
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
+
+                        </motion.div>
+                    </AnimatePresence>
+
+                )
+            }
 
             {
                 choisenMacSRTrue == false && (

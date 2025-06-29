@@ -4,11 +4,13 @@ import { IoMdClose } from "react-icons/io";
 import { useState, useEffect } from 'react'
 import PopupHead from './popup-head.jsx'
 import TerminalAdding from './terminal/terminal-adding.jsx'
+import ConnectionAdding from './connection/connection-adding.jsx';
 import ButtonNext from './button_next.jsx'
 
 const Popup = (props) => {
 
 	const {
+		// Terminal adding
 		isPopup,
 		setPopup,
 		choisenTerminal,
@@ -22,7 +24,13 @@ const Popup = (props) => {
 		setGiveNameToTerminal,
 		giveNameToTerminal,
 		addConnection,
-		setConnection
+		setConnection,
+
+		// Connection adding
+		setSwitch,
+		isSwitch,
+		choisenPort,
+		setChoisenPort
 	} = props
 
 	const tabs = [
@@ -31,7 +39,7 @@ const Popup = (props) => {
 		{ 'title': 'Подтверждение', 'ind': 3 },
 	]
 
-	const [whatTab, setTab] = useState(1)
+	const [tabStep, setTabStep] = useState('terminal')
 
 	return (
 		<>
@@ -53,11 +61,13 @@ const Popup = (props) => {
 									className='popup__close' />
 
 								<PopupHead
-									setTab={setTab}
-									whatTab={whatTab}
+									tabStep={tabStep}
 									tabs={tabs} />
 
 								<TabPage
+									// Terminal adding
+									tabStep={tabStep}
+									setTabStep={setTabStep}
 									giveNameToTerminal={giveNameToTerminal}
 									setGiveNameToTerminal={setGiveNameToTerminal}
 									givenTo={givenTo}
@@ -70,7 +80,13 @@ const Popup = (props) => {
 									setTerminal={setTerminal}
 									choisenTerminal={choisenTerminal}
 									addConnection={addConnection}
-									whatTab={whatTab} />
+
+									// Connection adding
+									isSwitch={isSwitch}
+									setSwitch={setSwitch}
+									choisenPort={choisenPort}
+									setChoisenPort={setChoisenPort}
+								/>
 							</div>
 						</motion.div>
 					)
@@ -83,7 +99,9 @@ const Popup = (props) => {
 const TabPage = (props) => {
 
 	const {
-		whatTab,
+		// Terminal adding
+		setTabStep,
+		tabStep,
 		setTerminal,
 		choisenTerminal,
 		setMacSR,
@@ -95,29 +113,59 @@ const TabPage = (props) => {
 		giveNameToTerminal,
 		setGiveNameToTerminal,
 		setConnection,
-		addConnection
+		addConnection,
+
+		// COnnection adding
+		setSwitch,
+		isSwitch,
+		setChoisenPort,
+		choisenPort
 	} = props
 
-	const [content, setContent] = useState(null)
 
 	return (
-		<div className='tabpage'>
-			<TerminalAdding
-				addConnection={addConnection}
-				setConnection={setConnection}
-				giveNameToTerminal={giveNameToTerminal}
-				setGiveNameToTerminal={setGiveNameToTerminal}
-				givenTo={givenTo}
-				setGivenTo={setGivenTo}
-				setMacSR={setMacSR}
-				choisenMacSR={choisenMacSR}
-				setTerminal={setTerminal}
-				choisenTerminal={choisenTerminal}
-				setChoisenMacSRTrue={setChoisenMacSRTrue}
-				choisenMacSRTrue={choisenMacSRTrue}
-			/>
-			<ButtonNext/>			
-		</div>
+		<AnimatePresence>
+			<div className='tabpage'>
+				{
+					tabStep == 'terminal' &&
+					<TerminalAdding
+						addConnection={addConnection}
+						setConnection={setConnection}
+						giveNameToTerminal={giveNameToTerminal}
+						setGiveNameToTerminal={setGiveNameToTerminal}
+						givenTo={givenTo}
+						setGivenTo={setGivenTo}
+						setMacSR={setMacSR}
+						choisenMacSR={choisenMacSR}
+						setTerminal={setTerminal}
+						choisenTerminal={choisenTerminal}
+						setChoisenMacSRTrue={setChoisenMacSRTrue}
+						choisenMacSRTrue={choisenMacSRTrue}
+					/>
+				}
+
+				{
+					tabStep == 'connection' &&
+					<ConnectionAdding
+						setSwitch={setSwitch}
+						isSwitch={isSwitch}
+						choisenPort={choisenPort}
+						setChoisenPort={setChoisenPort}
+					/>
+				}
+
+				<ButtonNext
+					setTabStep={setTabStep}
+					tabStep={tabStep}
+					addConnection={addConnection}
+					giveNameToTerminal={giveNameToTerminal}
+					givenTo={givenTo}
+					choisenMacSR={choisenMacSR}
+					choisenMacSRTrue={choisenMacSRTrue}
+				/>
+			</div>
+		</AnimatePresence>
+
 	)
 }
 
