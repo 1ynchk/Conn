@@ -18,5 +18,8 @@ class Connections(models.Model):
     vlan = models.CharField(max_length=10, unique=True, null=True)
     addr = models.CharField(max_length=500)
 
+    class Meta:
+        unique_together = ('name', 'vlan')
+
     def __str__(self):
         return self.user.username

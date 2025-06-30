@@ -49,7 +49,7 @@ class Port(models.Model):
     macs = models.IntegerField() # Поменять на m-t-m связь в будущем
     connector = models.CharField(choices=connectors_types, max_length=50)
     comment = models.CharField(max_length=355, null=True)
-    client = models.ManyToManyField('connection.Connections', through=PortThroughConnection)
+    connection = models.ManyToManyField('connection.Connections', through=PortThroughConnection)
     
     def __str__(self):
         return self.name
