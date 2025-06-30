@@ -1,6 +1,7 @@
 import { motion } from "framer-motion"
 import SwitchAdding from "./switch-adding"
 import SwitchPorts from "./switch-ports"
+import AddVlan from './add-vlan.jsx'
 
 const ConnectionAdding = (props) => {
 
@@ -8,7 +9,9 @@ const ConnectionAdding = (props) => {
         setSwitch,
         isSwitch,
         choisenPort,
-        setChoisenPort
+        setChoisenPort,
+	setVlan,
+	isVlan
     } = props
 
     return (
@@ -21,6 +24,12 @@ const ConnectionAdding = (props) => {
                 choisenPort={choisenPort}
                 setChoisenPort={setChoisenPort}
             />
+	    <AddVlan 
+		isSwitch={isSwitch}
+                choisenPort={choisenPort}
+	    	isVlan={isVlan}
+		setVlan={setVlan}
+	    />
         </motion.div>
     )
 }

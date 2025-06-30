@@ -53,7 +53,8 @@ const AddingMacOrNum = (props) => {
                 padding: choisenTerminal != null ? 0 : 10,
                 backgroundColor: choisenTerminal != null ? "#ffffff" : "#808080",
                 y: choisenTerminal != null ? 0 : 10
-            }}>
+            }}
+	    >
             <div className='tabpage__title'>
                 Введите {choisenTerminal === 'C-DATA FD511G-X' ? 'серийный номер' : 'MAC адрес'} терминала:
             </div>

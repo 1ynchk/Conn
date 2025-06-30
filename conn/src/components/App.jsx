@@ -18,6 +18,7 @@ function App() {
 	// Connection adding
 	const [isSwitch, setSwitch] = useState(null)
 	const [choisenPort, setChoisenPort] = useState(null)
+	const [isVlan, setVlan] = useState(null)
 
 	return (
 		<>
@@ -46,6 +47,8 @@ function App() {
 				setSwitch={setSwitch}
 				choisenPort={choisenPort}
 				setChoisenPort={setChoisenPort}
+				isVlan={isVlan}
+				setVlan={setVlan}
 			/>
 		</>
 	)

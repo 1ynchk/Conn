@@ -9,8 +9,6 @@ const SwitchPorts = (props) => {
         isSwitch
     } = props
 
-    console.log(isSwitch)
-
     return (
         <motion.div
             initial={{ backgroundColor: "#808080", y: 10 }}
@@ -30,15 +28,64 @@ const SwitchPorts = (props) => {
                 {
                     isSwitch != null && typeof (isSwitch) == 'object' ? '' : <div className="connection-title">Выберите свитч</div>
                 }
+
+		{
+			isSwitch != null && typeof (isSwitch) == 'object' && isSwitch.ports.length == 0 && (
+				<div className='connection-switch-ports-warn'>
+
+				</div>
+			)
+		}
+
                 {
-                    isSwitch != null && typeof (isSwitch) == 'object' && (
+                    isSwitch != null && typeof (isSwitch) == 'object' && isSwitch.ports.length != 0 && (
                         isSwitch.ports.map((el, ind) => {
                             return (
-                                <div className="switch-port-container">
-                                    <div className="switch-port-wrapper">
+                                <div key={ind} className="switch-port-container">
+                                    <div 
+				    	onClick={() => {
+						if (el.id == choisenPort) {
+							setChoisenPort(null)
+						} else {
+							setChoisenPort(el.id)
+						}
+						
+					}} 
+				    	className={`switch-port-wrapper ${el.id == choisenPort ? 'active' : ''}`}>
                                         <img className="switch-port" src={port} />
                                     </div>
                                     <div className="switch-port-name">{el.name}</div>
+				    <div className='switch-port-hover'>
+				    	<div className='switch-port-hover-name'>
+						Название: {el.name}
+				    	</div>
+
+				    	<div className='switch-port-hover-connector'>
+						Тип: {el.connector}	
+				    	</div>
+
+					<div className='switch-port-hover-vlan'>
+						Vlan порта: {el.untgd_vlan}	
+				    	</div>
+
+				    	{
+						el.connection.length != 0 ? (
+							<div className='switch-port-hover-connections'>
+								Подключения: { 
+									el.connection.map(cel => {
+										<span className='switch-port-connection-span'>cel.name </span>
+									})
+								}
+				    			</div>
+						) : (
+							<div className='switch-port-hover-connections'>
+								Подключений пока нет
+				    			</div>
+						)
+					}
+				    	
+
+				    </div>
                                 </div>
                             )
                         })

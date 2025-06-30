@@ -159,11 +159,53 @@
 	border-radius: 10px;
 }
 
+.switch-port-wrapper {
+	cursor: pointer;
+}
+
 .switch-port-container {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-
+	position: relative;
 	margin-right: 20px;
+}
+
+.switch-port-hover {
+	background-color: #8FDCEA;
+	border-radius: 10px;
+	padding: 5px;
+	position: absolute;
+	left: 10px;
+	bottom: -50px;
+	visibility: hidden;
+	opacity: 0;
+	transition: .3s ease;
+	z-index: 5;
+	width: 150px;
+	font-size: 14px;
+}
+
+.switch-port-container:hover  .switch-port-hover {
+	opacity: 1;
+	visibility: visible;
+}
+
+.switch-port-connection-span {
+	color: white;
+}
+
+.connection-switch-ports-warn {
+	color: red;
+	font-size: 18px;
+}
+
+.switch-port-wrapper {
+	border-radius: 10px;
+	transition: .3s ease;
+}
+
+.switch-port-wrapper.active {
+	background-color: green;	
 }

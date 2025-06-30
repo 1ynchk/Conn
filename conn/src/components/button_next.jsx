@@ -5,13 +5,19 @@ import { motion } from 'framer-motion';
 const ButtonNext = (props) => {
 
 	const {
+		// Terminal adding
 		choisenMacSRTrue,
 		choisenMacSR,
 		givenTo,
 		giveNameToTerminal,
 		addConnection,
 		tabStep,
-		setTabStep
+		setTabStep,
+
+		// Connection adding
+		isVlan, 
+		choisenPort,
+		isSwitch
 	} = props
 
 	const [isBtnActive, setBtnActive] = useState(false)
@@ -29,13 +35,26 @@ const ButtonNext = (props) => {
 				setBtnActive(false)
 			}
 		}
+
+		if (tabStep == 'connection') {
+			if (isVlan != null && isVlan.length != 0 && choisenPort != null 
+			   && typeof(choisenPort) == 'number' && isSwitch != null && typeof(isSwitch) == 'object'
+			) {
+				setBtnActive(true)
+			} else {
+				setBtnActive(false)
+			}
+		}
 	}, [
 		choisenMacSRTrue,
 		choisenMacSR,
 		givenTo,
 		giveNameToTerminal,
 		addConnection,
-		tabStep
+		tabStep, 
+		isVlan, 
+		choisenPort,
+		isSwitch
 	])
 
 	useEffect(() => {

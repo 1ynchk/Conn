@@ -30,7 +30,9 @@ const Popup = (props) => {
 		setSwitch,
 		isSwitch,
 		choisenPort,
-		setChoisenPort
+		setChoisenPort,
+		isVlan,
+		setVlan
 	} = props
 
 	const tabs = [
@@ -86,6 +88,8 @@ const Popup = (props) => {
 									setSwitch={setSwitch}
 									choisenPort={choisenPort}
 									setChoisenPort={setChoisenPort}
+									isVlan={isVlan}
+									setVlan={setVlan}
 								/>
 							</div>
 						</motion.div>
@@ -119,7 +123,9 @@ const TabPage = (props) => {
 		setSwitch,
 		isSwitch,
 		setChoisenPort,
-		choisenPort
+		choisenPort,
+		isVlan,
+		setVlan
 	} = props
 
 
@@ -151,10 +157,13 @@ const TabPage = (props) => {
 						isSwitch={isSwitch}
 						choisenPort={choisenPort}
 						setChoisenPort={setChoisenPort}
+						setVlan={setVlan}
+						isVlan={isVlan}
 					/>
 				}
 
 				<ButtonNext
+					// Terminal adding
 					setTabStep={setTabStep}
 					tabStep={tabStep}
 					addConnection={addConnection}
@@ -162,6 +171,11 @@ const TabPage = (props) => {
 					givenTo={givenTo}
 					choisenMacSR={choisenMacSR}
 					choisenMacSRTrue={choisenMacSRTrue}
+
+					// Connection adding
+					isVlan={isVlan}
+					choisenPort={choisenPort}
+					isSwitch={isSwitch}
 				/>
 			</div>
 		</AnimatePresence>
