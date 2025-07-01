@@ -38,7 +38,7 @@ const Confirming = (props) => {
 				</tr>
 				<tr className='table-row'>
 					<td className='table-data'>Порт</td>
-					<td>{choisenPort}</td>
+					<td>{choisenPort.name}</td>
 				</tr>
 				<tr className='table-row'>
 					<td className='table-data'>VLAN</td>

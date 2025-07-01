@@ -44,14 +44,14 @@ const SwitchPorts = (props) => {
                                 <div key={ind} className="switch-port-container">
                                     <div 
 				    	onClick={() => {
-						if (el.id == choisenPort) {
+						if (choisenPort != null && el.id == choisenPort.id) {
 							setChoisenPort(null)
 						} else {
-							setChoisenPort(el.id)
+							setChoisenPort({name: el.name, id: el.id})
 						}
 						
 					}} 
-				    	className={`switch-port-wrapper ${el.id == choisenPort ? 'active' : ''}`}>
+				    	className={`switch-port-wrapper ${choisenPort != null && el.id == choisenPort.id ? 'active' : ''}`}>
                                         <img className="switch-port" src={port} />
                                     </div>
                                     <div className="switch-port-name">{el.name}</div>

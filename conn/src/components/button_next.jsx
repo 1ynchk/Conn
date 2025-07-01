@@ -39,7 +39,7 @@ const ButtonNext = (props) => {
 
 		if (tabStep == 'connection') {
 			if (isVlan != null && isVlan.length != 0 && choisenPort != null 
-			   && typeof(choisenPort) == 'number' && isSwitch != null && typeof(isSwitch) == 'object'
+			   && typeof(choisenPort) == 'object' && isSwitch != null && typeof(isSwitch) == 'object'
 			) {
 				setBtnActive(true)
 			} else {
