@@ -15,8 +15,6 @@ const AddVlan = (props) => {
 	const [vlanComponent, setVlanComponent] = useState(null)
 	const [isAvailable, setAvailable] = useState(null)
 
-	console.log(isVlan)
-
 	useEffect(() => {
 		const timeout = setTimeout(
 			() => {

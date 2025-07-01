@@ -22,6 +22,7 @@ const ButtonNext = (props) => {
 
 	const [isBtnActive, setBtnActive] = useState(false)
 	const [isBackBtn, setBackBtn] = useState(false)
+	const [timer, setTimer] = useState(null)
 
 	useEffect(() => {
 		if (tabStep == 'terminal') {
@@ -45,6 +46,10 @@ const ButtonNext = (props) => {
 				setBtnActive(false)
 			}
 		}
+
+		if (tabStep == 'confirming') {
+			setBtnActive(false)
+		}
 	}, [
 		choisenMacSRTrue,
 		choisenMacSR,
@@ -58,17 +63,38 @@ const ButtonNext = (props) => {
 	])
 
 	useEffect(() => {
-		if (tabStep == 'connection') {
+		if (tabStep == 'connection' || tabStep == 'confirming') {
 			setBackBtn(true)
 		} else {
 			setBackBtn(false)
 		}
 	}, [tabStep])
 
+	useEffect(() => {
+	    if (tabStep === 'confirming') {
+	    let counter = 0
+	    const interval = setInterval(() => {
+				setTimer(counter)
+				counter++
+				
+				if (counter >= 4) {
+					clearInterval(interval)
+					setBtnActive(true)
+				}
+			    }, 1000)
+    
+	     return () => clearInterval(interval)
+		 }
+	}, [tabStep])
+
 	const handleNextChange = () => {
 		switch (true) {
 			case tabStep == 'terminal':
 				setTabStep('connection')
+				break
+
+			case tabStep == 'connection':
+				setTabStep('confirming')
 				break
 		}
 	}
@@ -77,6 +103,10 @@ const ButtonNext = (props) => {
 		switch (true) {
 			case tabStep == 'connection':
 				setTabStep('terminal')
+				break
+
+			case tabStep == 'confirming':
+				setTabStep('connection')
 				break
 		}
 	}
@@ -100,7 +130,17 @@ const ButtonNext = (props) => {
 				onClick={() => handleNextChange()}
 				disabled={!isBtnActive}
 				className='button-next'>
-				Продолжить
+				{
+					tabStep == 'confirming'	&& timer + 1 == 4 && 'Продолжить'
+				}
+
+				{
+					tabStep == 'confirming'	&& timer + 1 != 4 && timer+1
+				}
+
+				{
+					tabStep != 'confirming' && 'Продолжить'
+				}
 			</button>
 		</>
 

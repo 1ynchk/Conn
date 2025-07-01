@@ -37,8 +37,7 @@ const SwitchAdding = (props) => {
     }, [])
 
     return (
-        <motion.div
-            className='tabpage__container' >
+        <motion.div>
             <div className='tabpage__title'>
                 Введите название коммутатора:
             </div>

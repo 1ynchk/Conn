@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import PopupHead from './popup-head.jsx'
 import TerminalAdding from './terminal/terminal-adding.jsx'
 import ConnectionAdding from './connection/connection-adding.jsx';
+import Confirming from './confirming.jsx'
 import ButtonNext from './button_next.jsx'
 
 const Popup = (props) => {
@@ -160,6 +161,21 @@ const TabPage = (props) => {
 						setVlan={setVlan}
 						isVlan={isVlan}
 					/>
+				}
+
+				{
+					tabStep == 'confirming' && 
+						<Confirming 
+							isVlan={isVlan}
+							choisenPort={choisenPort}
+							isSwitch={isSwitch}	
+							tabStep={tabStep}
+							addConnection={addConnection}
+							giveNameToTerminal={giveNameToTerminal}
+							choisenTerminal={choisenTerminal}
+							givenTo={givenTo}
+							choisenMacSR={choisenMacSR}
+						/>
 				}
 
 				<ButtonNext

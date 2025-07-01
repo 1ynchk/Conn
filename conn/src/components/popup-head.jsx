@@ -18,6 +18,9 @@ const PopupHead = (props) => {
 			case tabStep == 'connection':
 				setTab(2)
 				break
+			case tabStep == 'confirming':
+				setTab(3)
+				break
 		}
 
 	}, [tabStep])
