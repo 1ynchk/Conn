@@ -184,6 +184,7 @@ const TabPage = (props) => {
 					tabStep={tabStep}
 					addConnection={addConnection}
 					giveNameToTerminal={giveNameToTerminal}
+					choisenTerminal={choisenTerminal}
 					givenTo={givenTo}
 					choisenMacSR={choisenMacSR}
 					choisenMacSRTrue={choisenMacSRTrue}

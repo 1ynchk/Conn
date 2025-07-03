@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { motion } from 'framer-motion';
-
+import { addNewConnection } from './../requests/confirming';
 
 const ButtonNext = (props) => {
 
@@ -13,6 +13,7 @@ const ButtonNext = (props) => {
 		addConnection,
 		tabStep,
 		setTabStep,
+		choisenTerminal,
 
 		// Connection adding
 		isVlan, 
@@ -87,6 +88,22 @@ const ButtonNext = (props) => {
 		 }
 	}, [tabStep])
 
+	const handleFetchData = () => {
+		addNewConnection(
+			{
+				"type_terminal": choisenTerminal,
+				"mac_or_sr": choisenMacSR,
+				"given_to": givenTo,
+				"name_terminal": giveNameToTerminal,
+				"connection": addConnection,
+				"switch": isSwitch,
+				"port": choisenPort,
+				"vlan": isVlan 
+			}
+		)
+		.then(result => console.log(result))
+	}
+
 	const handleNextChange = () => {
 		switch (true) {
 			case tabStep == 'terminal':
@@ -96,7 +113,11 @@ const ButtonNext = (props) => {
 			case tabStep == 'connection':
 				setTabStep('confirming')
 				break
-		}
+
+			case tabStep == 'confirming':
+				handleFetchData()
+				break	
+			}
 	}
 
 	const handleBackChange = () => {

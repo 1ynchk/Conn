@@ -69,10 +69,10 @@ const SwitchPorts = (props) => {
 				    	</div>
 
 				    	{
-						el.connection.length != 0 ? (
+						el.connections.length != 0 ? (
 							<div className='switch-port-hover-connections'>
 								Подключения: { 
-									el.connection.map(cel => {
+									el.connections.map(cel => {
 										<span className='switch-port-connection-span'>cel.name </span>
 									})
 								}
