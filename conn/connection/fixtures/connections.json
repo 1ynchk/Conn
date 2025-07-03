@@ -1,0 +1,12 @@
+[
+    {
+        "model": "connection.Connections",
+        "pk": 1,
+        "fields": {
+            "name": "diakonov",
+            "user": 1,
+            "type_conn": "Динамический IP",
+            "addr": "Россия, г. Набережные Челны, Зеленый пер., д. 20 кв.145"
+        }
+    }
+]

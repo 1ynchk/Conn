@@ -76,10 +76,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'conn.wsgi.application'
 
+import psycopg
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'conn',
+        'PASSWORD': '',
+        'USER': 'postgres',
+        'PORT': '5432',
+        'HOST': '127.0.0.1'
     }
 }
 

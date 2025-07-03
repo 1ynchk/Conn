@@ -1,0 +1,62 @@
+[
+    {
+        "model": "users.Users",
+        "pk": 1,
+        "fields": {
+            "username": "diakonov",
+            "name": "Александр",
+            "surname": "Дьяконов",
+            "otchestvo": "Максимович",
+            "number": "9(180)402-55-55",
+            "email": "gapaddeummuto-3466@yopmail.com"
+        }
+    },
+    {
+        "model": "users.Users",
+        "pk": 2,
+        "fields": {
+            "username": "spasskiy",
+            "name": "Алексей",
+            "surname": "Спасский",
+            "otchestvo": "Николаевич",
+            "number": "38(8362)502-75-75",
+            "email": "sommayirefre-2882@yopmail.com"
+        }
+    },
+    {
+        "model": "users.Users",
+        "pk": 3,
+        "fields": {
+            "username": "volkova",
+            "name": "Виктория",
+            "surname": "Волкова",
+            "otchestvo": "Александрович",
+            "number": "943(24)746-39-18",
+            "email": "broucrommihaqueu-1159@yopmail.com"
+        }
+    },
+    {
+        "model": "users.Users",
+        "pk": 4,
+        "fields": {
+            "username": "varzin",
+            "name": "Егор",
+            "surname": "Варзин",
+            "otchestvo": "Алексадрович",
+            "number": "57(300)266-53-13",
+            "email": "teuffoubrunubri-3284@yopmail.com"
+        }
+    },
+    {
+        "model": "users.Users",
+        "pk": 5,
+        "fields": {
+            "username": "girickih",
+            "name": "Михаил",
+            "surname": "Гирицких",
+            "otchestvo": "Дмитриевич",
+            "number": "924(37)741-38-14",
+            "email": "seifrounaffefri-4121@yopmail.com"
+        }
+    }
+]
