@@ -10,7 +10,7 @@ const Confirming = (props) => {
 		giveNameToTerminal,
 		givenTo,
 		choisenMacSR,
-		choisenTerminal
+		choisenTerminal,
 	} = props
 
 	return (

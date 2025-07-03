@@ -9,6 +9,8 @@ const SwitchPorts = (props) => {
         isSwitch
     } = props
 
+    console.log(isSwitch)
+
     return (
         <motion.div
             initial={{ backgroundColor: "#808080", y: 10 }}
@@ -73,7 +75,8 @@ const SwitchPorts = (props) => {
 							<div className='switch-port-hover-connections'>
 								Подключения: { 
 									el.connections.map(cel => {
-										<span className='switch-port-connection-span'>cel.name </span>
+
+										return <span className='switch-port-connection-span'>{cel.name}</span>
 									})
 								}
 				    			</div>

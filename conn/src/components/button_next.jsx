@@ -16,9 +16,14 @@ const ButtonNext = (props) => {
 		choisenTerminal,
 
 		// Connection adding
-		isVlan, 
+		isVlan,
 		choisenPort,
-		isSwitch
+		isSwitch,
+
+		// Done
+		isDone,
+		setDone,
+		setNull
 	} = props
 
 	const [isBtnActive, setBtnActive] = useState(false)
@@ -39,8 +44,8 @@ const ButtonNext = (props) => {
 		}
 
 		if (tabStep == 'connection') {
-			if (isVlan != null && isVlan.length != 0 && choisenPort != null 
-			   && typeof(choisenPort) == 'object' && isSwitch != null && typeof(isSwitch) == 'object'
+			if (isVlan != null && isVlan.length != 0 && choisenPort != null
+				&& typeof (choisenPort) == 'object' && isSwitch != null && typeof (isSwitch) == 'object'
 			) {
 				setBtnActive(true)
 			} else {
@@ -57,8 +62,8 @@ const ButtonNext = (props) => {
 		givenTo,
 		giveNameToTerminal,
 		addConnection,
-		tabStep, 
-		isVlan, 
+		tabStep,
+		isVlan,
 		choisenPort,
 		isSwitch
 	])
@@ -72,20 +77,20 @@ const ButtonNext = (props) => {
 	}, [tabStep])
 
 	useEffect(() => {
-	    if (tabStep === 'confirming') {
-	    let counter = 0
-	    const interval = setInterval(() => {
+		if (tabStep === 'confirming') {
+			let counter = 0
+			const interval = setInterval(() => {
 				setTimer(counter)
 				counter++
-				
+
 				if (counter >= 4) {
 					clearInterval(interval)
 					setBtnActive(true)
 				}
-			    }, 1000)
-    
-	     return () => clearInterval(interval)
-		 }
+			}, 1000)
+
+			return () => clearInterval(interval)
+		}
 	}, [tabStep])
 
 	const handleFetchData = () => {
@@ -98,10 +103,12 @@ const ButtonNext = (props) => {
 				"connection": addConnection,
 				"switch": isSwitch,
 				"port": choisenPort,
-				"vlan": isVlan 
+				"vlan": isVlan
 			}
 		)
-		.then(result => console.log(result))
+			.then(result => {
+				setDone(result)
+			})
 	}
 
 	const handleNextChange = () => {
@@ -115,9 +122,15 @@ const ButtonNext = (props) => {
 				break
 
 			case tabStep == 'confirming':
+				setTabStep('done')
 				handleFetchData()
-				break	
-			}
+				break
+
+			case tabStep == 'done':
+				setTabStep('terminal')
+				setNull()
+				break
+		}
 	}
 
 	const handleBackChange = () => {
@@ -138,9 +151,9 @@ const ButtonNext = (props) => {
 				isBackBtn && (
 					<motion.button
 						onClick={() => handleBackChange()}
-						initial={{opacity: 0}}
-						animate={{opacity: 1}}
-						exit={{opacity: 0}}
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
 						className="button-back">
 						Назад
 					</motion.button>
@@ -150,17 +163,21 @@ const ButtonNext = (props) => {
 			<button
 				onClick={() => handleNextChange()}
 				disabled={!isBtnActive}
-				className='button-next'>
+				className={`button-next ${tabStep == 'done' ? 'middle' : ''}`}>
 				{
-					tabStep == 'confirming'	&& timer + 1 == 4 && 'Продолжить'
+					tabStep == 'confirming' && timer + 1 == 4 && 'Продолжить'
 				}
 
 				{
-					tabStep == 'confirming'	&& timer + 1 != 4 && timer+1
+					tabStep == 'confirming' && timer + 1 != 4 && timer + 1
 				}
 
 				{
-					tabStep != 'confirming' && 'Продолжить'
+					tabStep != 'confirming' && tabStep != 'done' && 'Продолжить'
+				}
+
+				{
+					tabStep == 'done' && 'Хорошо'
 				}
 			</button>
 		</>

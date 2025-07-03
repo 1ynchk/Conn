@@ -20,6 +20,23 @@ function App() {
 	const [choisenPort, setChoisenPort] = useState(null)
 	const [isVlan, setVlan] = useState(null)
 
+	// Done
+	const [isDone, setDone] = useState(null)
+
+	const setNull = () => {
+		setDone(null)
+		setVlan(null)
+		setChoisenPort(null)
+		setSwitch(null)
+		setConnection(null)
+		setGiveNameToTerminal(null)
+		setGivenTo(null)
+		setChoisenMacSRTrue(null)
+		setMacSR(null)
+		setTerminal(null)
+		setPopup(false)
+	}
+
 	return (
 		<>
 			<Header
@@ -49,6 +66,13 @@ function App() {
 				setChoisenPort={setChoisenPort}
 				isVlan={isVlan}
 				setVlan={setVlan}
+
+				// Done
+				isDone={isDone}
+				setDone={setDone}
+
+				// Extra functions
+				setNull={setNull}
 			/>
 		</>
 	)

@@ -28,7 +28,7 @@ const PopupHead = (props) => {
 	return (
 		<ul className='popup__head'>
 			{
-				tabs.map(el => {
+				tabStep != 'done' && tabs.map(el => {
 					return (
 						<li
 							key={el.ind}
@@ -36,6 +36,10 @@ const PopupHead = (props) => {
 							{el.title}
 						</li>)
 				})
+			} 
+
+			{
+				tabStep == 'done' && ''
 			}
 		</ul>
 	)

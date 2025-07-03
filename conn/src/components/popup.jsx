@@ -7,6 +7,7 @@ import TerminalAdding from './terminal/terminal-adding.jsx'
 import ConnectionAdding from './connection/connection-adding.jsx';
 import Confirming from './confirming.jsx'
 import ButtonNext from './button_next.jsx'
+import ConnectionIsAdded from './connection-is-added.jsx';
 
 const Popup = (props) => {
 
@@ -33,7 +34,14 @@ const Popup = (props) => {
 		choisenPort,
 		setChoisenPort,
 		isVlan,
-		setVlan
+		setVlan,
+
+		// Done
+		isDone,
+		setDone,
+
+		// Extra functions
+		setNull
 	} = props
 
 	const tabs = [
@@ -91,6 +99,13 @@ const Popup = (props) => {
 									setChoisenPort={setChoisenPort}
 									isVlan={isVlan}
 									setVlan={setVlan}
+
+									// Done
+									isDone={isDone}
+									setDone={setDone}
+
+									// Extra functions
+									setNull={setNull}
 								/>
 							</div>
 						</motion.div>
@@ -120,13 +135,20 @@ const TabPage = (props) => {
 		setConnection,
 		addConnection,
 
-		// COnnection adding
+		// Connection adding
 		setSwitch,
 		isSwitch,
 		setChoisenPort,
 		choisenPort,
 		isVlan,
-		setVlan
+		setVlan,
+
+		// Done
+		isDone,
+		setDone,
+
+		// Extra functions
+		setNull
 	} = props
 
 
@@ -164,18 +186,27 @@ const TabPage = (props) => {
 				}
 
 				{
-					tabStep == 'confirming' && 
-						<Confirming 
-							isVlan={isVlan}
-							choisenPort={choisenPort}
-							isSwitch={isSwitch}	
-							tabStep={tabStep}
-							addConnection={addConnection}
-							giveNameToTerminal={giveNameToTerminal}
-							choisenTerminal={choisenTerminal}
-							givenTo={givenTo}
-							choisenMacSR={choisenMacSR}
-						/>
+					tabStep == 'confirming' &&
+					<Confirming
+						isVlan={isVlan}
+						choisenPort={choisenPort}
+						isSwitch={isSwitch}
+						tabStep={tabStep}
+						addConnection={addConnection}
+						giveNameToTerminal={giveNameToTerminal}
+						choisenTerminal={choisenTerminal}
+						givenTo={givenTo}
+						choisenMacSR={choisenMacSR}
+
+					/>
+				}
+
+				{
+					tabStep == 'done' &&
+					<ConnectionIsAdded
+						isDone={isDone}
+						setDone={setDone}
+					/>
 				}
 
 				<ButtonNext
@@ -193,6 +224,13 @@ const TabPage = (props) => {
 					isVlan={isVlan}
 					choisenPort={choisenPort}
 					isSwitch={isSwitch}
+
+					// Done
+					isDone={isDone}
+					setDone={setDone}
+
+					// Extra functions
+					setNull={setNull}
 				/>
 			</div>
 		</AnimatePresence>
