@@ -8,5 +8,45 @@
             "type_conn": "Динамический IP",
             "addr": "Россия, г. Набережные Челны, Зеленый пер., д. 20 кв.145"
         }
+    },
+    {
+        "model": "connection.Connections",
+        "pk": 2,
+        "fields": {
+            "name": "spasskiy",
+            "user": 2,
+            "type_conn": "Динамический IP",
+            "addr": "Россия, г. Набережные Челны, Зеленый пер., д. 20 кв.146"
+        }
+    },
+    {
+        "model": "connection.Connections",
+        "pk": 3,
+        "fields": {
+            "name": "volkova",
+            "user": 3,
+            "type_conn": "Динамический IP",
+            "addr": "Россия, г. Набережные Челны, Зеленый пер., д. 20 кв.146"
+        }
+    },
+    {
+        "model": "connection.Connections",
+        "pk": 4,
+        "fields": {
+            "name": "varzin",
+            "user": 4,
+            "type_conn": "Динамический IP",
+            "addr": "Россия, г. Набережные Челны, Зеленый пер., д. 20 кв.146"
+        }
+    },
+    {
+        "model": "connection.Connections",
+        "pk": 5,
+        "fields": {
+            "name": "girickih",
+            "user": 5,
+            "type_conn": "Динамический IP",
+            "addr": "Россия, г. Набережные Челны, Зеленый пер., д. 20 кв.146"
+        }
     }
 ]
