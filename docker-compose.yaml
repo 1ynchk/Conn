@@ -1,0 +1,63 @@
+
+networks:
+
+  mynetwork:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.168.0.0/24
+          gateway: 10.168.0.1
+
+
+services:
+
+  backend_server:
+
+    build:
+      context: ./backend
+      dockerfile: dockerfile
+
+    ports:
+      - "8000:8000"
+
+    networks:
+      mynetwork:
+        ipv4_address: 10.168.0.2
+
+    environment:
+      DB_NAME: conn-db
+      DB_HOST: database
+      DB_PORT: 5431
+      DB_PASSWORD: POSTGREStest123321
+      DB_USER: postgres
+      IS_DEBUG: "true"
+
+    command: >
+      sh -c  "
+      python manage.py makemigrations 
+      && python manage.py migrate
+      && python manage.py loaddata users
+      && python manage.py loaddata connections
+      && python manage.py loaddata ports
+      && python manage.py loaddata switches
+      "
+
+  frontend_server:
+
+    build: 
+      context: ./frontend
+      dockerfile: dockerfile
+
+    ports:
+      - "80:80"
+      - "443:443"
+
+    environment:
+      BACKEND_URL: 10.168.0.2
+
+    depends_on: 
+      - backend_server
+
+    networks:
+      mynetwork:
+        ipv4_address: 10.168.0.4
