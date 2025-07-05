@@ -68,8 +68,6 @@ def add_connection_and_terminal(request):
     if not terminal['is_conn']:
         return Response(response)
 
-    print(response)
-
     response['data']['check_conn'] = True
 
     if not terminal['is_new']:

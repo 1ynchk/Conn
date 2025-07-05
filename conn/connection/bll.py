@@ -17,7 +17,10 @@ def adding_terminal(type_terminal, mac_or_sr, given_to, name_terminal, connectio
         return {'obj': None, 'is_conn': False, 'is_new': False} 
 
     try:
-        obj = Devices.objects.get(Q(mac_addr=mac_or_sr) | Q(serial_number=mac_or_sr))
+        if type_terminal == 'C-DATA FD511G-X':
+            obj = Devices.objects.get(serial_number=mac_or_sr)
+        else:
+            obj = Devices.objects.get(mac_addr=mac_or_sr)
         return {'obj': obj, 'is_conn': True, 'is_new': False, }
     except Exception:
 
