@@ -1,0 +1,53 @@
+[
+	{
+		"model": "staff.Staff",
+		"pk": 1,
+		"fields": {
+			"name": "Степан",
+			"job_number": "301",
+			"empl_number": "86(93)952-07-04",
+			"email": "jexinutraura-1459@yopmail.com"
+		}
+	},
+	{
+		"model": "staff.Staff",
+		"pk": 2,
+		"fields": {
+			"name": "Олег",
+			"job_number": "302",
+			"empl_number": "7(47)698-05-78",
+			"email": "miquoubaussegra-3701@yopmail.com"
+		}
+	},
+	{
+		"model": "staff.Staff",
+		"pk": 3,
+		"fields": {
+			"name": "Алексей",
+			"job_number": "303",
+			"empl_number": "05(5458)912-43-32",
+			"email": "laxeikeilaku-8909@yopmail.com"
+		}
+	},
+	{
+		"model": "staff.Staff",
+		"pk": 4,
+		"fields": {
+			"name": "Максим",
+			"job_number": "304",
+			"empl_number": "74(19)367-26-39",
+			"email": "felluyoppeixou-2377@yopmail.com"
+		}
+	},
+	{
+		"model": "staff.Staff",
+		"pk": 5,
+		"fields": {
+			"name": "Влад",
+			"job_number": "305",
+			"empl_number": "80(66)249-15-26",
+			"email": "ragugroxoima-4541@yopmail.com"
+		}
+	}
+
+]
