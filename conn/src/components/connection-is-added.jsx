@@ -20,12 +20,12 @@ const ConnectionIsAdded = (props) => {
                 </>
             ) : (
                 <>
-                    <MdOutlineCancel className="done-icon" />
+                    <MdOutlineCancel className="done-icon-false" />
                     <div className="done-title">Не успех!</div>
                     <div className="done-comment">
-                        Терминал не был добавлен. Ниже приведен список возможных проблем в процессе добавления терминла:
+                        Терминал не был добавлен. Ниже приведен список возможных проблем в процессе добавления терминала:
                     </div>
-                    <table className='table'>
+                    <table className='table add-connection-table'>
                         <tr className='table-row'>
                             <td className='table-data'>Подключение существует</td>
                             <td>

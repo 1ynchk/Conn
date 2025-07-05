@@ -244,6 +244,11 @@ td {
 	font-size: 80px;
 	color: green;
 }
+.done-icon-false {
+	margin-top: 15px;
+	font-size: 80px;
+	color: red;
+}
 
 .done-title {
 	margin-top: 15px;
@@ -251,4 +256,8 @@ td {
 
 .done-comment {
 	margin-top: 15px;
+}
+
+.table.add-connection-table {
+	margin-top: 10px;
 }
