@@ -1,0 +1,12 @@
+[
+	{
+	"model": "switches.Switches",
+	"pk": 1,
+	"fields": {
+		"name": "Switch Октябрьский пр-кт 1",
+		"model": "5-Port 2.5G Multi-Gigabit Desktop Switch",
+		"ports": [1, 2, 3, 4, 5]
+		}
+	}
+]
+

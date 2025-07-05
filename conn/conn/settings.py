@@ -16,7 +16,12 @@ else:
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "217.25.94.71", "192.168.0.4"]
+ALLOWED_HOSTS = [
+        "127.0.0.1", 
+        "217.25.94.71", 
+        "10.168.0.4",
+        "10.168.0.2",
+        ]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -47,7 +52,8 @@ CORS_ALLOWED_ORIGINS = [
         'http://85.193.84.89:80',
         'http://127.0.0.1:5173',
         'http://localhost:5173',
-        "http://127.0.0.1:*"
+        "http://10.168.0.4:80",
+        "http://10.168.0.2:8000"
 ]
 
 CORS_ALLOW_METHOD = [

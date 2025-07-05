@@ -1,0 +1,52 @@
+[
+        {
+        "model": "switches.Port",
+        "pk": 1,
+        "fields": {
+            "name": "Порт 1",
+            "untgd_vlan": 1,
+            "macs": 5,
+            "connector": "RJ45 / мед."
+            }
+        },
+        {
+        "model": "switches.Port",
+        "pk": 2,
+        "fields": {
+            "name": "Порт 2",
+            "untgd_vlan": 1,
+            "macs": 5,
+            "connector": "RJ45 / мед."
+            }
+        },
+        {
+        "model": "switches.Port",
+        "pk": 3,
+        "fields": {
+            "name": "Порт 3",
+            "untgd_vlan": 1,
+            "macs": 5,
+            "connector": "RJ45 / мед."
+            }
+        },
+        {
+        "model": "switches.Port",
+        "pk": 4,
+        "fields": {
+            "name": "Порт 4",
+            "untgd_vlan": 1,
+            "macs": 5,
+            "connector": "RJ45 / мед."
+            }
+        },
+        {
+        "model": "switches.Port",
+        "pk": 5,
+        "fields": {
+            "name": "Порт 5",
+            "untgd_vlan": 1,
+            "macs": 5,
+            "connector": "RJ45 / мед."
+            }
+        },
+]
