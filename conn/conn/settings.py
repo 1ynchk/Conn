@@ -8,9 +8,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-_kb$w(f*g(1l9t$-196d6_&bq1)h%+n_+jl#l2bttwfwc5wgg='
 
+if os.getenv('IS_DEBUG') == 'true':
+    DEBUG = True
+else:
+    DEBUG = False
+
+
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "217.25.94.71"]
+ALLOWED_HOSTS = ["127.0.0.1", "217.25.94.71", "192.168.0.4"]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -36,8 +42,9 @@ INSTALLED_APPS = [
 # CORSHEADERS
 
 CORS_ALLOWED_ORIGINS = [
-        'http://217.25.94.71:5173',
-        'http://85.193.84.89:5173',
+        'http://217.25.94.71:80',
+        'http://217.25.94.71',
+        'http://85.193.84.89:80',
         'http://127.0.0.1:5173',
         'http://localhost:5173',
         "http://127.0.0.1:*"
@@ -84,11 +91,11 @@ import psycopg
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'conn',
+        'NAME': os.getenv('DB_NAME'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
-        'USER': 'postgres',
-        'PORT': '5432',
-        'HOST': '127.0.0.1'
+        'USER': os.getenv('DB_USER'),
+        'PORT': os.getenv('DB_PORT'),
+        'HOST': os.getenv('DB_HOST')
     }
 }
 
