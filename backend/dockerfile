@@ -4,9 +4,19 @@ WORKDIR /app
 
 COPY backend/requirements.txt .
 COPY backend/conn .
+COPY fixtures.sh .
+
+RUN chmod 755 fixtures.sh
+
+ENV DB_NAME=${DB_NAME}
+ENV DB_PASSWORD=${DB_PASSWORD}
+ENV DB_USER=${DB_USER}
+ENV DB_PORT=${DB_PORT}
+ENV DB_HOST=${DB_HOST}
+
 
 RUN pip install -r requirements.txt
 
 EXPOSE 8000
 
-ENTRYPOINT gunicorn conn.wsgi:application --bind 0.0.0.0:8000
+ENTRYPOINT ["./fixtures.sh"]
