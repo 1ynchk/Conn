@@ -13,15 +13,13 @@ def is_mac_unique(request):
     mac = request.query_params.get('mac') 
     is_mac = request.query_params.get('is_mac')
 
-    print(is_mac)
-     
     try:
-        if is_mac:
+        if is_mac == 'true':
             obj = Devices.objects.get(mac_addr=mac)
         else:
             obj = Devices.objects.get(serial_number=mac)
     except Exception:
         return Response({'status': 'ok', 'comment': 'succes', 'is_unique': True})
-    
+   
     return Response({'status': 'ok', 'comment': 'succes', 'is_unique': False})
     
